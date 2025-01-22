@@ -6,6 +6,7 @@ import DetalleCarrito from './componentes/DetalleCarrito'
 import { BrowserRouter , Routes, Route } from 'react-router-dom';
 import Pagina404 from './componentes/Pagina404';
 import DetalleProducto from './componentes/DetalleProducto';
+import useStorageState from './servicios/UseStorageState';
 
 
 function App() {
@@ -18,8 +19,10 @@ function App() {
 
  
 
-  const [total, setTotal] = useState(0); // Estado para el importe total
-  const [productos, setProductos] = useState([]); // Lista de productos del carrrito
+  const [total, setTotal] = useStorageState(0); // Estado para el importe total
+  const [productos, setProductos] = useStorageState([]); // Lista de productos del carrrito
+
+  LocalStorageServicio.set("productos" , productos)
 
   return (
 
